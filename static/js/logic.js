@@ -85,13 +85,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
       if (depth > 90)
         return"red";
       else if (depth >70)
-        return"#fc4903";
-      else if (depth > 50)
         return"#fc8403";
+      else if (depth > 50)
+        return"#ffb84d";
       else if (depth > 30)
-        return"#fcad03";
+        return"#ffd699";
       else if (depth > 10)
-        return"#cafc03";
+        return"#e4fc5f";
       else
         return"green";
     }
@@ -162,22 +162,15 @@ legend.onAdd = function(map) {
   let div = L.DomUtil.create("div", "info legend");
   // Set up the intervals
   let intervals = [-10, 10, 30, 50, 70, 90];
-/*[
-  "-10-10",
-  "10-30",
-  "30-50",
-  "50-70",
-  "70-90",
-  "+90"
-];*/
+
   // Set the colors for the intervals
   let colors = [
-    "red",  
-    "#fc4903",
+    "green",
+    "#e4fc5f",
+    "#ffd699",
+    "#ffb84d",
     "#fc8403",
-    "#fcad03",
-    "#cafc03",
-    "green"
+    "red" 
   ];
 
   // loop through the intervals and the colors and generate a label
@@ -189,7 +182,7 @@ legend.onAdd = function(map) {
       + colors[i]
       +"'></i>"
       + intervals[i]
-      + (intervals[i + 1] ? "km &ndash; " + intervals[i + 1] + "km<br>" : "+");
+      + (intervals[i + 1] ? "&ndash;" + intervals[i + 1] + "<br>" : "+");
   }
 
   return div;
