@@ -162,14 +162,22 @@ legend.onAdd = function(map) {
   let div = L.DomUtil.create("div", "info legend");
   // Set up the intervals
   let intervals = [-10, 10, 30, 50, 70, 90];
+/*[
+  "-10-10",
+  "10-30",
+  "30-50",
+  "50-70",
+  "70-90",
+  "+90"
+];*/
   // Set the colors for the intervals
   let colors = [
-    "green",
-    "#cafc03",
-    "#fcad03",
-    "#fc8403",
+    "red",  
     "#fc4903",
-    "red"
+    "#fc8403",
+    "#fcad03",
+    "#cafc03",
+    "green"
   ];
 
   // loop through the intervals and the colors and generate a label
@@ -179,9 +187,9 @@ legend.onAdd = function(map) {
     // inner html that sets the square for each interval and label
     div.innerHTML += "<i style='background: "
       + colors[i]
-      +"'></i"
+      +"'></i>"
       + intervals[i]
-      + (intervals[i + 1] ? "km &ndash km;" + intervals[i + 1] + "km<br>" : "+");
+      + (intervals[i + 1] ? "km &ndash; " + intervals[i + 1] + "km<br>" : "+");
   }
 
   return div;
@@ -189,5 +197,9 @@ legend.onAdd = function(map) {
 
 // Add the legend to the map
 legend.addTo(myMap);
+
+
+
+
 
 
